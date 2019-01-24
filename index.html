@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <title>FRAME LOOKUP</title>
+</head>
+<body>
+<table class= "frameLU"> 
+  <thead>
+    <tr>
+      <div id = "enterFrame">
+      ENTER FRAME INFO
+      </div>
+    </tr>
+  </thead>
+    <tr>
+      <div id = "frameInfo" contenteditable = "true"></div>
+    </tr>
+    <tr>
+      <th id = "mainParameters"><span>Model</span></th>
+      <th id = "mainParameters"><span>Color</span></th>
+      <th id = "mainParameters"><span>Eye Size</span></th>
+      <th id = "mainParameters"><span>Retail Price ($)</span></th>
+    </tr>
+    <tr>
+      <td><input id = "modelInput" type = "text" value="" style = "margin-left: 10%; font-weight: bold;"></td>
+      <td><input id = "colorInput" type = "text" value="" style = "margin-left: 10%; font-weight: bold;"></td>
+      <td><input id = "eyeSizeInput" type = "number" value="0" style = "margin-left: 10%; font-weight: bold;"></td>
+      <td><input id = "rpInput" type = "number" value="0" style="margin-left: 10%; font-weight: bold;" onchange = "calcCopay()"></td>
+    </tr>
+</table>
+
+<table "FrameLookDown">
+  <tr>
+    <div id = "enterFrame">
+      ENTER FRAME BENEFIT
+    </div>
+  </tr>
+
+  <tr>
+    <div id = "frameInfo" contenteditable></div>
+  </tr>
+  <tr>
+    <div id = "separator">
+    </div>
+  </tr>
+  
+  <tr>
+    <td><span id = "invoice">RETAIL PRICE</span></td>
+    <td style = "font-weight: bold;">$<span id = "retailPrice">100.00</span></td>
+  </tr>
+
+  <tr>
+    <td><span id = "invoice">FRAME ALLOWANCE</span></td>
+    <td style = "font-weight: bold;  float: left;">$<input id = "frameAllowance" type = "number" value="0" style = "font-weight: bold;" onchange = "calcCopay()"></td>
+    <!-- <th><div id = "parameterInput"><span contenteditable = "true"></span></th> -->
+  </tr>
+
+  <tr>
+    <td><span id = "invoice">COPAY</span></td>
+    <td style = "font-weight: bold;">$<span id = "COPAY">100.00</span></td>
+  </tr>
+
+  </body>
+</table>
+<style>
+#enterFrame{
+  font-weight: bold;
+  background-color: yellow;
+  text-align: center;
+  height: 5%;
+  font-size: 16pt;
+}
+#frameInfo{
+  display: flex; 
+  background-color: tan;
+  height: 7%;
+}
+#mainParameters{
+  background-color: gray;
+  width: 24%;
+  height: 20%;
+}
+#parameterInput{
+  width: 25%;
+  min-height: 10%;
+  border: 0px;
+  text-align: center;
+}
+#inputRow{
+  height: 20%;
+}
+#separator{
+  height: 40%;
+  background-color: gray;
+}
+#invoice{
+  font-size: 10pt;
+  border: 0px;
+  width: 30%;
+  font-weight: bold;
+  text-align: right;
+}
+#retailPrice{
+  font-size: 10pt;
+  border: 0px;
+  width: 10%;
+}
+Body{
+  font-family: Arial;
+  font-size: 10pt;
+  height: 500px;
+  width: 800px;
+}
+TABLE{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+TH{
+  border: 1px solid black;
+  background: #dddddd;
+  padding: 5px;
+}
+TD{
+  border: 1px solid black;
+}
+div{
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 20;
+  /*margin-bottom: 10px;*/
+}
+input{
+  border: none;
+  text-align: center;
+  font-size: 10pt;
+}
+</style>
+<script>
+function calcCopay(){
+  var retailPrice = document.getElementById("rpInput").value;
+  document.getElementById("retailPrice").innerHTML = retailPrice;
+
+  var frameAllowance = document.getElementById("frameAllowance").value;
+  var COPAY = (retailPrice - frameAllowance) * 0.8
+  document.getElementById("COPAY").innerHTML = COPAY;
+}
+</script>
+</html>
